@@ -1,5 +1,4 @@
 package board;
-
 import lombok.*;
 
 @Builder

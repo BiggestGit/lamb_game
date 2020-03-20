@@ -1,7 +1,5 @@
 package board;
-
 import logic.HexCalculator;
-
 
 import java.util.HashMap;
 public class HexMap {
