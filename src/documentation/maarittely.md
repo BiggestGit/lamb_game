@@ -42,6 +42,6 @@ Tilavaativuuden tavoite on O(bd), jo aiemmin todettujen rajoituksien perusteella
 kuin O(90*30) eli käytännössä vakio.
 
 # Lähteet
-https://www.redblobgames.com/grids/hexagons/
-https://www.ultraboardgames.com/battle-sheep/game-rules.php
+https://www.redblobgames.com/grids/hexagons/ <br/>
+https://www.ultraboardgames.com/battle-sheep/game-rules.php <br/>
 http://www.cs.umd.edu/~hajiagha/474GT15/Lecture12122013.pdf
