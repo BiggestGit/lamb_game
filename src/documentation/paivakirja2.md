@@ -1,4 +1,4 @@
-####Maanantai 16.3
+#### Maanantai 16.3
 Aloitin heksakon ja hashmapin suunnittelun. Tulin siihen tulokseen että algoritmien suunnittelun kannalta oli tehdä
 heksakko kolmen koordinaatin taulukkona (x, y, z). Idea löytyi https://www.redblobgames.com/grids/hexagons/ artikkelista
 Sivusto on osoittautunut korvaamattoman hyväksi resurssiksi heksojen ymmärtämisen suhteen. Nyt kun heksojen perusrakenne
@@ -14,7 +14,7 @@ toteutus.
 
 Käytin vielä pari tuntia IDEn kanssa taisteluun. Jostain syystä IDE ei tunnista yhtään riippuvuuksia.
 
-####Tiistai 17.3
+#### Tiistai 17.3
 Vieläkin pari tuntia IDEn kanssa taistelua. Jokin on gradlen perusasetuksissa ristiriidassa IDEn kanssa
 Päädyin aloittamaan koko projektin alusta. Korvaan nyt vanhan projektin uudella.
 
@@ -26,13 +26,13 @@ määriä laskutoimituksia. Harkitsin pienemmänkin alkuluvun valitsemista, mutt
 tilaa virheille. Satun myös pitämään numerosta, ja ohjelman kehittyessä tulen varmasti vaihtamaan sen muutenkin.
 Nyt tärkeintä on päästä itse ohjelmoinnin pariin.
 
-####Keskiviikko 18.3
+#### Keskiviikko 18.3
 Loin Heksa, HeksKartta ja HeksaLaskuri. Monen tunnin taistelu gitin kanssa. En ollut oikeaoppisesti haarauttanut repoa
 ja seurauksena oli sananmukaisesti päätön haara. Ongelman korjaamiseen meni monta tuntia. Toivottavasti tästä eteenpäin
 ohjelmointiympäristöongelmat ovat takanapäin. Sain kuitenkin Heksan ja Heksikon rakennettua. Seuraavaksi perus
 testiympäristön pystyttäminen ja yksikkötestien käyttöönotto niin että voin luottaa luokkien toimivuuteen.
 
-####Torstai 19.3
+#### Torstai 19.3
 Pieni korjaus päiväkirjaan ja kartanluontiin.
 
-####Perjantai 20.3
+#### Perjantai 20.3
