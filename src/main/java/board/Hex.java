@@ -1,6 +1,12 @@
 package board;
 import lombok.*;
 
+import java.util.Objects;
+
+/**
+ * A hex object contains it's coordinates, the player that controls it and the number of pieces on the hex. Also the
+ * has code is stored directly to avoid needing to calculate it multiple times.
+ */
 @Builder
 @Getter
 @Setter
@@ -14,7 +20,15 @@ public class Hex {
     private final int hashCode;
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hex hex = (Hex) o;
+        return this.hashCode == hex.hashCode;
+    }
+
+    @Override
     public int hashCode() {
-        return this.hashCode;
+        return Objects.hash(this.hashCode);
     }
 }

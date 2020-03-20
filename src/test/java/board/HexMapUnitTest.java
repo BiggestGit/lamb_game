@@ -15,12 +15,9 @@ public class HexMapUnitTest {
     HexMap hexMap;
 
     @Test
-    public void test(){
+    public void test00initialized(){
         hex = Hex.builder().hashCode(0).xCoordinate(0).yCoordinate(0).zCoordinate(0).pieces(0).player(0).build();
-        hexMap = new HexMap(4);
-        hexMap.getHex(0);
-        System.out.println(hexMap.getHex(1).getXCoordinate());
-        System.out.println(hexMap.getHex(1).getYCoordinate());
+        hexMap = new HexMap();
         Assert.assertEquals(hex, hexMap.getHex(0));
     }
 }

@@ -5,20 +5,30 @@ import java.util.HashMap;
 public class HexMap {
     private HashMap<Integer, Hex> map;
 
-    public HexMap(int size){
+    /**
+     * Creates a new HexMap that starts from the vertex which is and creates and
+     * populates a Hash Map with hexes until the 16th hex is reached.
+     */
+    //TODO: Create a map generator that populates the map more like in the original game
+    public HexMap(){
+        map = new HashMap<>();
         int hashCode;
-        int sideLength = size/4;
-        for (int x = -sideLength; x < sideLength; x++) {
-            for (int y = -sideLength; y < sideLength; y++) {
+        int sideLength = 2;
+        int hexCount = 0;
+        for (int x = -sideLength; x <= sideLength; ++x) {
+            for (int y = -sideLength; y <= sideLength; ++y) {
                 hashCode = HexCalculator.calculateHash(x, y);
-                this.map.put(hashCode,
-                        Hex.builder().xCoordinate(x)
-                                     .yCoordinate(y)
-                                     .zCoordinate(-x-y)
-                                     .pieces(0)
-                                     .player(0)
-                                     .hashCode(hashCode)
-                                     .build());
+                if (hexCount < 16){
+                    this.map.put(hashCode,
+                            Hex.builder().xCoordinate(x)
+                                    .yCoordinate(y)
+                                    .zCoordinate(-x-y)
+                                    .pieces(0)
+                                    .player(0)
+                                    .hashCode(hashCode)
+                                    .build());
+                    hexCount++;
+                }
             }
         }
     }
