@@ -33,6 +33,11 @@ public class HexMap {
         }
     }
 
+    /**
+     * Returns a tile on the map corresponding to the hash.
+     * @param hashCode hashCode linked to a hex tile.
+     * @return returns a Hex
+     */
     public Hex getHex(int hashCode){
         return this.map.get(hashCode);
     }
