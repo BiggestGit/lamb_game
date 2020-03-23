@@ -1,7 +1,10 @@
 package board;
 import logic.HexCalculator;
+import lombok.Builder;
+
 import java.util.HashMap;
 
+@Builder
 public class HexMap {
     private HashMap<Integer, Hex> map;
 
@@ -40,5 +43,9 @@ public class HexMap {
      */
     public Hex getHex(int hashCode){
         return this.map.get(hashCode);
+    }
+
+    public boolean containsHex(int hashCode){
+        return this.map.containsKey(hashCode);
     }
 }
