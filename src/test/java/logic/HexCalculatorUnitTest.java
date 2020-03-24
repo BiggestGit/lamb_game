@@ -3,9 +3,7 @@ package logic;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class HexCalculatorTest {
+public class HexCalculatorUnitTest {
 
     @Test
     public void calculateHashX0Y0Test() {

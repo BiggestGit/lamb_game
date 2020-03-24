@@ -4,7 +4,6 @@ import lombok.Builder;
 
 import java.util.HashMap;
 
-@Builder
 public class HexMap {
     private HashMap<Integer, Hex> map;
 

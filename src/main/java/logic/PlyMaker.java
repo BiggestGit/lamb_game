@@ -5,28 +5,29 @@ import errors.IncorrectDirectionException;
 import errors.InsufficientPiecesException;
 
 public class PlyMaker {
-    private final HexMap hexMap;
+    //TODO figure our how to make final without breaking mock
+    private HexMap hexMap;
 
     public PlyMaker(){
-        this.hexMap = HexMap.builder().build();
+        this.hexMap = new HexMap();
     }
 
     /**
      * Moves pieces from one hex to another.
-     * @param fromHex The hex that the pieces are moved from
-     * @param toHex The hex that the pieces are moved to
-     * @param amount the amount of hexes to be moved
+     * @param fromHexHash The hex that the pieces are moved from
+     * @param toHexHash The hex that the pieces are moved to
+     * @param amountMoved the amountMoved of hexes to be moved
      */
-    private void movePieces(int fromHex, int toHex, int amount){
-        int numberOfPieces = this.hexMap.getHex(fromHex).getPieces();
-        if (numberOfPieces <= amount){
+    public void movePieces(int fromHexHash, int toHexHash, int amountMoved){
+        int numberOfPiecesOnHex = this.hexMap.getHex(fromHexHash).getPieces();
+        if (numberOfPiecesOnHex <= amountMoved){
             throw new InsufficientPiecesException("The move is invalid. There are only " +
-                                                  Integer.toString(numberOfPieces - 1) +
-                                                  "pieces available. Tried to move " +
-                                                  Integer.toString(amount));
+                                                  Integer.toString(numberOfPiecesOnHex - 1) +
+                                                  " pieces available. Tried to move " +
+                                                  Integer.toString(amountMoved));
         }
-        this.hexMap.getHex(fromHex).setPieces(numberOfPieces - amount);
-        this.hexMap.getHex(toHex).setPieces(amount);
+        this.hexMap.getHex(fromHexHash).setPieces(numberOfPiecesOnHex - amountMoved);
+        this.hexMap.getHex(toHexHash).setPieces(amountMoved);
     }
 
     /**
@@ -37,7 +38,8 @@ public class PlyMaker {
      * @param directionY direction of travel on y axis can be 1, 0 or -1
      * @return returns hash of closest valid hex
      */
-    private int checkDirection(int originX, int originY, int directionX, int directionY){
+    //TODO make directional check dependent on coordinates rather than a contains function.
+    public int checkDirection(int originX, int originY, int directionX, int directionY){
         if ( directionX > 1 || directionY > 1 || directionX < -1 || directionY < -1){
             throw new IncorrectDirectionException("directional coordinates should be between -1 and 1 for both x and y." +
                                                   "instead directional coordinates were: x=" +
