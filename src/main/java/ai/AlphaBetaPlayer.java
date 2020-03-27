@@ -1,4 +1,4 @@
-package artificial_intelligence;
+package ai;
 
 public class AlphaBetaPlayer {
 }

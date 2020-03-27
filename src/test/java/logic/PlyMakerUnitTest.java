@@ -17,7 +17,7 @@ public class PlyMakerUnitTest {
     private HexMap hexMapMock;
 
     @Test
-    public void movePiecesGetsCorrectHex(){
+    public void movePiecesGetsCorrectHex() {
         //Arrange
         int fromHexHash = 0;
         int toHexHash = 1;

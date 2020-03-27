@@ -1,6 +1,5 @@
-package artificial_intelligence;
+package ai;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 

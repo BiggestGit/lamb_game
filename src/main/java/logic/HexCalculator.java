@@ -6,7 +6,7 @@ public class HexCalculator {
 
     /**
      * Calculates a very simple hash for a Hex. The prime number chosen is very small to make calculations faster.
-     * There is no danger of collision since the creates y is going to be is 8. Technically a smaller prime would do
+     * There is no danger of collision since the greatest y value can be is 8. Technically a smaller prime would do
      * just fine.
      * @param x x coordinate of the hex.
      * @param y y coordinate of the hex.
