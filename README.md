@@ -9,3 +9,8 @@ hajautustaulukkoon mahdollisimman nopean heksan tarkistamisen varmistamiseksi.
 
 #### Pelin tarkemmat säännöt
 https://www.ultraboardgames.com/battle-sheep/game-rules.php
+
+#### Viikkoraportit
+ [viikkoraportti1](./documentation/viikkoraportti1.md)
+ [viikkoraportti2](./documentation/viikkoraportti2.md)
+ [viikkoraportti3](./documentation/viikkoraportti3.md)
