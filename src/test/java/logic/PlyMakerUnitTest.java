@@ -7,8 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
-
+//TODO more tests
 @RunWith(MockitoJUnitRunner.class)
 public class PlyMakerUnitTest {
     @InjectMocks
