@@ -3,14 +3,13 @@ package logic;
 import board.HexMap;
 import errors.IncorrectDirectionException;
 import errors.InsufficientPiecesException;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter @AllArgsConstructor
 public class PlyMaker {
     //TODO figure our how to make final without breaking mock
-    private HexMap hexMap;
-
-    public PlyMaker(){
-        this.hexMap = new HexMap();
-    }
+    private final HexMap hexMap;
 
     /**
      * Moves pieces from one hex to another.
@@ -36,10 +35,11 @@ public class PlyMaker {
      * @param originY y coordinate of origin hex
      * @param directionX direction of travel on x axis can be 1, 0 or -1
      * @param directionY direction of travel on y axis can be 1, 0 or -1
-     * @return returns hash of closest valid hex
+     * @param originHex hash of the hex that we are checking from
+     * @return returns hash of furthest valid hex or originHex if it doesn't exist.
      */
     //TODO make directional check dependent on coordinates rather than a contains function.
-    public int checkDirection(int originX, int originY, int directionX, int directionY){
+    public int checkDirection(int originX, int originY, int directionX, int directionY, int originHex){
         if ( directionX > 1 || directionY > 1 || directionX < -1 || directionY < -1){
             throw new IncorrectDirectionException("directional coordinates should be between -1 and 1 for both x and y." +
                                                   "instead directional coordinates were: x=" +
@@ -49,18 +49,23 @@ public class PlyMaker {
         }
         int nextX = originX;
         int nextY = originY;
-        int hashCode;
+        int previous = originHex;
+        int current;
         while(true){
             nextX += directionX;
             nextY += directionY;
-            hashCode = HexCalculator.calculateHash(nextX, nextY);
-            if (this.hexMap.containsHex(hashCode)){
-                if(this.hexMap.getHex(hashCode).getPieces() == 0){
-                    return hashCode;
+            current = HexCalculator.calculateHash(nextX, nextY);
+            if (this.hexMap.containsHex(current)){
+
+                if(this.hexMap.getHex(current).getPieces() == 0){
+                    previous = current;
+                }
+                else{
+                    return previous;
                 }
             }
             else {
-                return hashCode;
+                return previous;
             }
         }
     }

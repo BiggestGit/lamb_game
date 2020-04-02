@@ -3,6 +3,7 @@ import logic.HexCalculator;
 import lombok.Builder;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class HexMap {
     private HashMap<Integer, Hex> map;
@@ -46,5 +47,33 @@ public class HexMap {
 
     public boolean containsHex(int hashCode){
         return this.map.containsKey(hashCode);
+    }
+
+    /**
+     * Counts the number of hexes that are controlled by each player and returns who controls the most hexes on the map
+     * @return the number of the player that has the most hexes, or -1 in the case of a tie.
+     */
+    public int determineWinner(){
+        int player1Pieces = 0;
+        int player2Pieces = 0;
+        int currentTileOwner;
+        for (Map.Entry<Integer, Hex> entry: this.map.entrySet()) {
+            currentTileOwner = entry.getValue().getPlayer();
+            if (currentTileOwner == 1){
+                player1Pieces++;
+            }
+            if(currentTileOwner == 2){
+                player2Pieces++;
+            }
+        }
+        if (player1Pieces > player2Pieces){
+            return 1;
+        }
+        else if(player2Pieces > player1Pieces){
+            return 2;
+        }
+        else{
+            return -1;
+        }
     }
 }
