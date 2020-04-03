@@ -1,5 +1,7 @@
 package board;
+import errors.InsufficientPiecesException;
 import logic.HexCalculator;
+import logic.PlyMaker;
 import lombok.Builder;
 
 import java.util.HashMap;
@@ -50,6 +52,24 @@ public class HexMap {
     }
 
     /**
+     * Moves pieces from one hex to another.
+     * @param fromHexHash The hex that the pieces are moved from
+     * @param toHexHash The hex that the pieces are moved to
+     * @param amountMoved the amountMoved of hexes to be moved
+     */
+    public void transferPieces(int fromHexHash, int toHexHash, int amountMoved){
+        int numberOfPiecesOnHex = this.map.get(fromHexHash).getPieces();
+        if (numberOfPiecesOnHex <= amountMoved){
+            throw new InsufficientPiecesException("The move is invalid. There are only " +
+                                                  Integer.toString(numberOfPiecesOnHex - 1) +
+                                                  " pieces available. Tried to move " +
+                                                  Integer.toString(amountMoved));
+        }
+        this.map.get(fromHexHash).setPieces(numberOfPiecesOnHex - amountMoved);
+        this.map.get(fromHexHash).setPieces(amountMoved);
+    }
+
+    /**
      * Counts the number of hexes that are controlled by each player and returns who controls the most hexes on the map
      * @return the number of the player that has the most hexes, or -1 in the case of a tie.
      */
@@ -77,3 +97,4 @@ public class HexMap {
         }
     }
 }
+

@@ -29,7 +29,7 @@ public class PlyMakerUnitTest {
         Mockito.when(fromHexMock.getPieces()).thenReturn(3);
 
         //Act
-        this.plyMaker.movePieces(fromHexHash, toHexHash, amount);
+        this.plyMaker.transferPieces(fromHexHash, toHexHash, amount);
 
         //Assert
         InOrder inOrder = Mockito.inOrder(this.hexMapMock, fromHexMock, toHexMock);

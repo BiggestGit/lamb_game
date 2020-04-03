@@ -1,33 +1,21 @@
 package logic;
 
+import board.Hex;
 import board.HexMap;
 import errors.IncorrectDirectionException;
-import errors.InsufficientPiecesException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter @AllArgsConstructor
 public class PlyMaker {
     //TODO figure our how to make final without breaking mock
     private final HexMap hexMap;
-
-    /**
-     * Moves pieces from one hex to another.
-     * @param fromHexHash The hex that the pieces are moved from
-     * @param toHexHash The hex that the pieces are moved to
-     * @param amountMoved the amountMoved of hexes to be moved
-     */
-    public void movePieces(int fromHexHash, int toHexHash, int amountMoved){
-        int numberOfPiecesOnHex = this.hexMap.getHex(fromHexHash).getPieces();
-        if (numberOfPiecesOnHex <= amountMoved){
-            throw new InsufficientPiecesException("The move is invalid. There are only " +
-                                                  Integer.toString(numberOfPiecesOnHex - 1) +
-                                                  " pieces available. Tried to move " +
-                                                  Integer.toString(amountMoved));
-        }
-        this.hexMap.getHex(fromHexHash).setPieces(numberOfPiecesOnHex - amountMoved);
-        this.hexMap.getHex(toHexHash).setPieces(amountMoved);
-    }
+    private final HashMap<Integer, Integer> activeNodesPlayer1;
+    private final HashMap<Integer, Integer> activeNodesPlayer2;
 
     /**
      * Checks if there are valid hexes in a given direction.
@@ -68,5 +56,46 @@ public class PlyMaker {
                 return previous;
             }
         }
+    }
+
+    //TODO toteuta loppuun
+    public int evaluateHexesForOrigin(int player) {
+        int freedoms;
+        int highestComparativeValue = -7000;
+        int currentComparativeValue  = -7000;
+        if (player == 1){
+            for (Map.Entry<Integer, Integer> entry: this.activeNodesPlayer1.entrySet()) {
+                freedoms = this.checkFreedoms(entry.getKey());
+
+                if (highestComparativeValue < currentComparativeValue){
+
+                }
+            }
+        }
+        else {
+            for (Map.Entry<Integer, Integer> entry: this.activeNodesPlayer2.entrySet()) {
+
+            }
+        }
+
+        return 0;
+    }
+
+
+    /**
+     * Checks for freedoms of give hex.
+     * @param origin the tile of which to calculate the freedoms of
+     * @return number of  freedoms of the hex
+     */
+    private int checkFreedoms(int origin){
+        return -1;
+    }
+
+    public AbstractMap.SimpleImmutableEntry<Integer, Integer> evaluateFromHexForTarget() {
+        return new AbstractMap.SimpleImmutableEntry<>(1, 1);
+    }
+
+    public void transferPieces(int fromHex, int toHex, int amount) {
+        this.hexMap.transferPieces(fromHex, toHex, amount);
     }
 }
